@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+  <style>body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+
+}
+
+.container {
+    background-color:beige;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px coral;
+    width: 300px;
+   
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+   
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid red;
+    border-radius: 4px;
+    margin-right: 25px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: coral;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color:coral;
+}
+
+#displayData {
+    margin-top: 20px;
+} </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1> Form</h1>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+              <button type="reset">reset</button>
+        </form>
+        <div id="displayData"></div>
+    </div>
+    <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const description = document.getElementById('description').value;
+
+    if (name === '' || email === '' || password === '' || description === '') {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    const displayData = document.getElementById('displayData');
+    
+    displayData.innerHTML = `
+        <h2>Submitted Data:</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Password:</strong> ${password}</p>
+        <p><strong>Description:</strong> ${description}</p>
+    `;
+});</script>
+</body>
+</html>

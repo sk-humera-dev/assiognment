@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML Complete Notes</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  h1 { text-align: center; }
+  h2 { color: #2a6ebb; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+  pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+  th, td { border: 1px solid #ccc; padding: 8px; }
+  th { background: #e8f0fe; }
+</style>
+</head>
+<body>
+<h1>HTML (HyperText Markup Language)</h1>
+
+<h2>What is HTML?</h2>
+<ul>
+  <li>HTML stands for HyperText Markup Language</li>
+  <li>Used to create and structure web pages</li>
+  <li>Uses tags (within &lt;&gt;) to mark parts of content on a browser</li>
+</ul>
+
+<h2>Basic Structure of HTML</h2>
+<table>
+  <tr><th>Part</th><th>Meaning</th></tr>
+  <tr><td>&lt;!DOCTYPE html&gt;</td><td>Document type declaration</td></tr>
+  <tr><td>&lt;html&gt;</td><td>Root of HTML document</td></tr>
+  <tr><td>&lt;head&gt;</td><td>Page info (not visible to users)</td></tr>
+  <tr><td>&lt;title&gt;</td><td>Title in browser tab</td></tr>
+  <tr><td>&lt;body&gt;</td><td>Page content visible to users</td></tr>
+</table>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Hello, World!
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>HTML Tags</h2>
+<ul>
+  <li>Tags are keywords in &lt;&gt;</li>
+  <li>Most tags have an opening and closing tag</li>
+  <li>Example: &lt;p&gt;This is a paragraph&lt;/p&gt;</li>
+</ul>
+
+<h2>Types of HTML Elements</h2>
+<ul>
+  <li><strong>Block-level Elements:</strong> Start on new line, take full width (div, h1-h6, p, ul, ol, li, table)</li>
+  <li><strong>Inline Elements:</strong> No new line, take only needed width (span, a, img, b, i)</li>
+</ul>
+
+<h2>Text Formatting Tags</h2>
+<pre><code>&lt;b&gt;: Bold
+&lt;i&gt;: Italic
+&lt;u&gt;: Underline
+&lt;strong&gt;: Important
+&lt;em&gt;: Emphasized
+&lt;mark&gt;: Highlight
+&lt;small&gt;: Small text
+&lt;br&gt;: Line break
+&lt;hr&gt;: Horizontal line
+</code></pre>
+
+<h2>Image Tag</h2>
+<pre><code>&lt;img src="image.jpg" alt="my image" width="200" height="150"&gt;
+</code></pre>
+
+<h2>Links (Anchor Tag)</h2>
+<pre><code>&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;
+</code></pre>
+
+<h2>Lists</h2>
+<p><strong>Ordered List:</strong></p>
+<pre><code>&lt;ol&gt;
+ &lt;li&gt;HTML&lt;/li&gt;
+ &lt;li&gt;CSS&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p><strong>Unordered List:</strong></p>
+<pre><code>&lt;ul&gt;
+ &lt;li&gt;Apple&lt;/li&gt;
+ &lt;li&gt;Banana&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2>Div & Span</h2>
+<table>
+  <tr><th>Tag</th><th>Use</th></tr>
+  <tr><td>&lt;div&gt;</td><td>Block container</td></tr>
+  <tr><td>&lt;span&gt;</td><td>Inline container</td></tr>
+</table>
+
+<h2>Table</h2>
+<pre><code>&lt;table border="1"&gt;
+ &lt;tr&gt;
+  &lt;th&gt;Name&lt;/th&gt;
+  &lt;th&gt;Age&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Ali&lt;/td&gt;
+  &lt;td&gt;16&lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<h2>Forms & Input Types</h2>
+<pre><code>&lt;form&gt;
+ Name: &lt;input type="text"&gt;&lt;br&gt;
+ Password: &lt;input type="password"&gt;&lt;br&gt;
+ Email: &lt;input type="email"&gt;&lt;br&gt;
+ Number: &lt;input type="number"&gt;&lt;br&gt;
+ Date: &lt;input type="date"&gt;&lt;br&gt;
+ &lt;input type="submit"&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h2>More Input Types</h2>
+<ul>
+  <li>&lt;input type="checkbox"&gt;</li>
+  <li>&lt;input type="radio"&gt;</li>
+  <li>&lt;input type="file"&gt;</li>
+</ul>
+
+<h2>Attributes</h2>
+<ul>
+  <li>id: Unique identifier</li>
+  <li>class: Grouping for CSS or scripts</li>
+  <li>src: Source file (images, audio, video)</li>
+  <li>href: Link target (anchor, CSS, JS)</li>
+  <li>width, height: Size for images, tables, etc.</li>
+</ul>
+
+<h2>Comments in HTML</h2>
+<pre><code>&lt;!-- This is a comment --&gt;
+</code></pre>
+
+<h2>Semantic Tags</h2>
+<p>Used for meaning and SEO accessibility:</p>
+<ul>
+<li>&lt;header&gt;, &lt;nav&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;</li>
+</ul>
+
+<h2>HTML5 Media</h2>
+<pre><code>&lt;video src="video.mp4" controls&gt;&lt;/video&gt;
+&lt;audio src="audio.mp3" controls&gt;&lt;/audio&gt;
+</code></pre>
+
+<h2>Iframe</h2>
+<pre><code>&lt;iframe src="https://example.com" width="400" height="300"&gt;&lt;/iframe&gt;
+</code></pre>
+
+<h2>Meta Tags</h2>
+<pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="Learn HTML easily"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+
+<h2>HTML Entities</h2>
+<ul>
+  <li>&amp;lt; for &lt;</li>
+  <li>&amp;gt; for &gt;</li>
+  <li>&amp;nbsp; for space</li>
+  <li>&amp;copy; for ©</li>
+</ul>
+
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    
+    <style>
+      .image{
+        display: flex;
+        justify-content: space-between;
+        background-color: transparent;
+      }
+      .about{
+        display: flex;
+        padding: 0px 20px;
+      }
+      
+        
+      .content{
+        padding: 150px 100px;
+        position: relative;
+        position:absolute;
+        display: inline;
+        color: white;
+      }
+      .content button{
+        background-color: aquamarine;
+        height: 50px;
+        width: 200px;
+        color: white;                 
+      }
+      .content button:hover{
+         background-color: transparent;
+        color: white;
+      }
+      .content h1{
+        font-size: 50px;
+        font-family:Arial, Helvetica, sans-serif;
+    
+      }
+      .content p{
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container{
+        display: flex;
+        justify-content: space-between;
+        background-color: transparent;
+      }
+      .left-side{
+        display: flex;
+        padding: 0px 20px;
+
+      }
+      .right-side{
+        display: flex;
+        color: white;
+        gap: 5px;
+        padding: 0px 20px;
+        border-bottom: 3px solid white;
+        justify-content: space-between;
+      }
+       .Lists{
+        display: flex;
+        gap: 50px;
+        list-style: none;
+        color: antiquewhite;
+       }
+      .right-side button{
+        background-color: #F15B43;
+        width: 150px;
+        color: white;
+        height: 50px;
+      }
+      .right-side button:hover{
+        background-color: black;
+        color: white;
+      }
+      #line{
+         border-bottom: 2px dashed white;
+         padding: 2px;        
+      } 
+      body{
+        background-image: url("/assets/h1_hero1.jpg.webp");
+        background-size:cover;
+        background-repeat: no-repeat;
+        
+      }
+    </style>
+</head>
+<body>
+     <div>
+      <div class="container">
+      <div class="left-side">
+    <div>
+      <img src="">
+    </div>
+    
+      <div>
+           <ul class="Lists">
+            <li>Home</li>
+            <li>Who we Are?</li>
+            <li>Programs</li>
+            <li>About</li>
+            <li>Contact Us</li>
+          </ul>
+      </div> 
+        </div>
+        <div class="right-side">
+        <p>Call Us:<span id="line">9049253976</span></p>
+        <button>Make A Donation</button>
+        </div>
+        <div class="content">
+        <h1>Give a helping<br>hand to those<br>who need it!</h1>
+        <p>When a child gets access to good food, it<br>can change just about everything</br></p>
+        <button>Ongoing Programs</button>
+        </div>
+        </div>
+      </div>
+</body>
+</html>

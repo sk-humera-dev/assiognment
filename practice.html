@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Multiplication Table Generator</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#111827;
+      --muted:#9ca3af;
+      --accent:#fb7185; /* pink-ish */
+      --accent-2:#60a5fa; /* blue-ish */
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071022 0%, #0b1220 100%);
+      color:#e6eef8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      width:100%;
+      max-width:760px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .logo {
+      width:56px; height:56px;
+      display:grid;place-items:center;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      font-weight:700;
+      color:white;
+      font-size:20px;
+      box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+    }
+    h1{font-size:18px; margin:0 0 0 4px}
+    p.lead{margin:4px 0 0 0; color:var(--muted); font-size:13px}
+
+    .controls{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    input[type=number]{
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:var(--glass);
+      color:inherit;
+      outline:none;
+      width:160px;
+      font-size:15px;
+    }
+    input[type=number]::placeholder{color:var(--muted)}
+    button{
+      padding:11px 14px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      box-shadow: 0 8px 20px rgba(11,27,60,0.35);
+      transition:transform .12s ease, filter .12s ease;
+    }
+    button:active{transform:translateY(1px)}
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .output{
+      margin-top:20px;
+      display:grid;
+      gap:12px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .message{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .table-list{
+      display:grid;
+      gap:8px;
+      margin-top:6px;
+    }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:10px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .row .left{display:flex;gap:12px;align-items:center}
+    .badge{
+      min-width:36px;height:36px;border-radius:8px;
+      display:grid;place-items:center;font-weight:700;
+      background:rgba(255,255,255,0.03);
+      color:var(--accent);
+      font-family:monospace;
+    }
+    .expr{font-family:monospace}
+    .result{font-weight:700;color:var(--accent-2)}
+
+    footer{margin-top:12px; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:13px}
+    @media (max-width:480px){
+      .controls{flex-direction:column;align-items:stretch}
+      input[type=number]{width:100%}
+      .logo{display:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="title">
+    <header>
+      <div class="logo">×</div>
+      <div>
+        <h1 id="title">Multiplication Table Generator</h1>
+        <p class="lead">Enter a number and generate its multiplication table up to 10.</p>
+      </div>
+    </header>
+
+    <section class="card" aria-label="controls">
+      <label for="numInput" style="display:block; color:var(--muted); font-size:13px; margin-bottom:8px">Type a number</label>
+      <div class="controls">
+        <input id="numInput" type="number" inputmode="numeric" placeholder="e.g. 3" aria-label="Number to generate table for" />
+        <button id="genBtn" title="Generate table">Generate</button>
+        <button id="clearBtn" class="btn-ghost" title="Clear output">Clear</button>
+        <div style="flex:1"></div>
+        <div style="color:var(--muted); font-size:13px">Shows 1 × n through 10 × n</div>
+      </div>
+
+      <div id="error" style="color:#ffb4b4; margin-top:10px; display:none; font-size:13px"></div>
+    </section>
+
+    <div class="output">
+      <section id="resultCard" class="card" aria-live="polite" style="display:none;">
+        <div class="message" id="summary"></div>
+        <div class="table-list" id="tableList" role="list"></div>
+      </section>
+      <section class="card" id="exampleCard">
+        <strong style="display:block; margin-bottom:8px">Example</strong>
+        <div class="message">If you input <code>3</code>, the output is:</div>
+        <div style="margin-top:10px">
+          <div class="row"><div class="left"><div class="badge">1</div><div class="expr">3 × 1</div></div><div class="result">= 3</div></div>
+          <div class="row"><div class="left"><div class="badge">2</div><div class="expr">3 × 2</div></div><div class="result">= 6</div></div>
+          <div class="row"><div class="left"><div class="badge">3</div><div class="expr">3 × 3</div></div><div class="result">= 9</div></div>
+          <div class="row" style="opacity:0.9"><div class="left"><div class="badge">10</div><div class="expr">3 × 10</div></div><div class="result">= 30</div></div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>Made for practice ✨</div>
+      <div id="note" style="color:var(--muted)">Press Enter to generate</div>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      const input = document.getElementById('numInput');
+      const genBtn = document.getElementById('genBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const tableList = document.getElementById('tableList');
+      const resultCard = document.getElementById('resultCard');
+      const error = document.getElementById('error');
+      const summary = document.getElementById('summary');
+
+      function showError(msg){
+        error.textContent = msg;
+        error.style.display = 'block';
+      }
+      function clearError(){
+        error.style.display = 'none';
+        error.textContent = '';
+      }
+
+      function generateTable(){
+        clearError();
+        tableList.innerHTML = '';
+        const raw = input.value.trim();
+        if(raw === ''){
+          showError('Please enter a number.');
+          resultCard.style.display = 'none';
+          return;
+        }
+        // Allow decimal, negative numbers too; but ensure it's a valid number
+        const n = Number(raw);
+        if(Number.isNaN(n) || !isFinite(n)){
+          showError('Invalid number. Please enter a valid numeric value.');
+          resultCard.style.display = 'none';
+          return;
+        }
+
+        // Build table 1..10
+        for(let i=1;i<=10;i++){
+          const product = n * i;
+          const row = document.createElement('div');
+          row.className = 'row';
+          row.setAttribute('role','listitem');
+
+          const left = document.createElement('div');
+          left.className = 'left';
+
+          const badge = document.createElement('div');
+          badge.className = 'badge';
+          badge.textContent = i;
+
+          const expr = document.createElement('div');
+          expr.className = 'expr';
+          // Use multiplication sign × (U+00D7)
+          expr.textContent = `${n} × ${i}`;
+
+          left.appendChild(badge);
+          left.appendChild(expr);
+
+          const right = document.createElement('div');
+          right.className = 'result';
+          right.textContent = `= ${product}`;
+
+          row.appendChild(left);
+          row.appendChild(right);
+          tableList.appendChild(row);
+        }
+
+        summary.textContent = `Multiplication table for ${n} (1 to 10).`;
+        resultCard.style.display = 'block';
+      }
+
+      genBtn.addEventListener('click', generateTable);
+      clearBtn.addEventListener('click', ()=>{
+        input.value = '';
+        tableList.innerHTML = '';
+        resultCard.style.display = 'none';
+        clearError();
+      });
+
+      // support Enter key
+      input.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){
+          generateTable();
+        }
+      });
+
+      // small UX: trim leading plus signs, and allow quick +/- typed values
+      input.addEventListener('input', (e) => {
+        // nothing strict here; leaving flexible
+      });
+
+      // Example pre-fill (optional)
+      // input.value = '3';
+      // generateTable();
+    })();
+  </script>
+</body>
+</html>
