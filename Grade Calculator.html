@@ -1,0 +1,129 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+    <style>
+        .body{
+            background-color: linear-gradient(135deg, #ffe0c6, #fff6ef)
+        }
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(44, 44, 44, 0.12);
+            border-radius: 18px;
+            border: 2px solid #FF6F61;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+            box-shadow: 0 8PX 24PX;
+        }
+        .container h3 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        .container label {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        .container input {
+            width: 130px;
+            padding: 6px;
+            margin-bottom: 15px;
+        }
+        .container button {
+            background: #FF6F61;
+            color:#222;
+            border: none;
+            padding: 10px 22px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #FF6F61;
+            color: #fff;
+            
+        }
+        #output {
+            margin-top: 20px;
+            background: white;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 4px 4px 8px gray;
+            text-align: left;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Grade Calculator</h3>
+        <div>
+            <label for="q1">Question 1:</label>
+            <input type="number" id="q1" min="0" max="5" required>
+        </div>
+        <div>
+            <label for="q2">Question 2:</label>
+            <input type="number" id="q2" min="0" max="5" required>
+        </div>
+        <div>
+            <label for="q3">Question 3:</label>
+            <input type="number" id="q3" min="0" max="5" required>
+        </div>
+        <div>
+            <label for="q4">Question 4:</label>
+            <input type="number" id="q4" min="0" max="5" required>
+        </div>
+        <button class="btn" onclick="calculateGrade()">Calculate</button>
+        <div id="output">
+            <p id="total"></p>
+            <p id="average"></p>
+            <p id="grade"></p>
+        </div>
+    </div>
+
+    <script>
+    function calculateGrade() {
+        const q1 = Number(document.getElementById("q1").value);
+        const q2 = Number(document.getElementById("q2").value);
+        const q3 = Number(document.getElementById("q3").value);
+        const q4 = Number(document.getElementById("q4").value);
+
+        if (
+            document.getElementById("q1").value === "" ||
+            document.getElementById("q2").value === "" ||
+            document.getElementById("q3").value === "" ||
+            document.getElementById("q4").value === ""
+        ) {
+            alert("Please fill out all fields!");
+            return;
+        }
+        
+        const total = q1 + q2 + q3 + q4;
+        const average = total / 4;
+
+        let grade = "";
+        if (average >= 4.5) {
+            grade = "A";
+        } else if (average >= 4.0) {
+            grade = "B";
+        } else if (average >= 3.0) {
+            grade = "C";
+        } else if (average >= 2.0) {
+            grade = "D";
+        } else {
+            grade = "E";
+        }
+
+        document.getElementById("total").textContent = "Total Marks: " + total + " / 20";
+        document.getElementById("average").textContent = "Average Marks: " + average.toFixed(2);
+        document.getElementById("grade").textContent = "Grade: " + grade;
+    }
+    </script>
+</body>
+</html>

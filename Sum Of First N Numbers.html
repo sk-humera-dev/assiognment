@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum of First N Numbers</title>
+    <style>
+        .container {
+            width: 340px;
+            margin: 90px auto;
+            padding: 28px;
+            background: peachpuff;
+            border-radius: 12px;
+            border: 2px solid #333;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container h3 {
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+        .container label {
+            display: inline-block;
+            width: 125px;
+            text-align: right;
+            margin-right: 8px;
+        }
+        .container input {
+            width: 120px;
+            padding: 5px;
+            margin-bottom: 12px;
+        }
+        .button {
+            background-color: aqua;
+            border: none;
+            padding: 8px 20px;
+            font-size: 16px;
+            margin: 10px 3px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+        #output {
+            margin-top: 18px;
+            background: white;
+            display: inline-block;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 4px 4px 8px gray;
+            text-align: left;
+            min-width: 180px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Sum of First N Numbers</h3>
+        <label for="numN">Enter N: </label>
+        <input type="number" id="numN" min="1" required>
+        <br>
+        <button class="btn" onclick="sumN()">Calculate Sum</button>
+        <div id="output"></div>
+    </div>
+    <script>
+    function sumN() {
+        const n = Number(document.getElementById("numN").value);
+        if (document.getElementById("numN").value === "" || n <= 0) {
+            document.getElementById("output").textContent = "Please enter a number.";
+            return;
+        }
+        const sum = (n * (n + 1)) / 2;
+        document.getElementById("output").textContent = "Sum is " + sum;
+    }
+    </script>
+</body>
+</html>
