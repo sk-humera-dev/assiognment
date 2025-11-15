@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pattern Printer</title>
+    <style>
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 30px;
+            background: peachpuff;
+            border-radius: 15px;
+            border: 2px solid #333;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container h3 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        .container label {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        .container input {
+            width: 130px;
+            padding: 6px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: aqua;
+            border: none;
+            padding: 10px 22px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: black;
+            color: white;
+        }
+        #output {
+            margin-top: 20px;
+            background: white;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 4px 4px 8px gray;
+            text-align: left;
+            min-width: 200px;
+            font-family: 'Consolas', monospace;
+            font-size: 18px;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Pattern Printer</h3>
+        <div>
+            <label for="n">Enter n:</label>
+            <input type="number" id="n" min="1" required>
+        </div>
+        <button class="btn" onclick="printPattern()">Print Pattern</button>
+        <div id="output"></div>
+    </div>
+    <script>
+    function printPattern() {
+        const n = Number(document.getElementById("n").value);
+        if (document.getElementById("n").value === "" || n < 1) {
+            alert("Please enter a valid number (n ≥ 1)!");
+            return;
+        }
+        let pattern = "";
+        for (let i = 1; i <= n; i++) {
+            pattern += "* ".repeat(i).trim() + "\n";
+        }
+        document.getElementById("output").textContent = pattern;
+    }
+    </script>
+</body>
+</html>

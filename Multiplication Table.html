@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table</title>
+    <style>
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 30px;
+            background: peachpuff;
+            border-radius: 15px;
+            border: 2px solid #333;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container h3 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        .container label {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        .container input {
+            width: 130px;
+            padding: 6px;
+            margin-bottom: 15px;
+        }
+        .button {
+            background-color: aqua;
+            border: none;
+            padding: 10px 22px;
+            font-size: 16px;
+            margin: 10px 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+        #output {
+            margin-top: 20px;
+            background: white;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 4px 4px 8px gray;
+            text-align: left;
+            min-width: 200px;
+        }
+        #tableResult {
+            font-size: 18px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Multiplication Table</h3>
+        <div>
+            <label for="num">Enter Number:</label>
+            <input type="number" id="num" min="1" required>
+        </div>
+        <button class="button" onclick="printTable()">Show Table</button>
+        <div id="output">
+            <div id="tableResult"></div>
+        </div>
+    </div>
+
+    <script>
+    function printTable() {
+        const num = Number(document.getElementById("num").value);
+        if (document.getElementById("num").value === "" || num < 1) {
+            alert("Please enter a valid number!");
+            return;
+        }
+        let result = "";
+        for (let i = 1; i <= 10; i++) {
+            result += num + " x " + i + " = " + (num * i) + "\n";
+        }
+        document.getElementById("tableResult").textContent = result;
+    }
+    </script>
+</body>
+</html>
